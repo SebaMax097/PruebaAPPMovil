@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private urlApi = "https://jsonplaceholder.typicode.com/posts/"
+  private urlApi = "jsonplaceholder.typicode.com/posts/"
 
   constructor( private http: HttpClient) { }
 
