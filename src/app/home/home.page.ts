@@ -13,14 +13,17 @@ export class HomePage implements OnInit{
   
   constructor( private apiService: ApiService) {}
   ngOnInit(): void {
-    const usuarios = localStorage.getItem('usuarios')
+
+    const usuarios = localStorage.getItem("usuarios")
     if(usuarios){
-      this.variableUsuarios = JSON.parse('usuarios')
+      this.variableUsuarios = JSON.parse(usuarios)
       console.log('Informacion de la LocalStorage ',this.variableUsuarios)
-    }else{
+    }
+    // En caso de que exista 'usuarios' dentro de la LocalStorage, se procede a buscar a la API
+    else{
       this.llamarFuncionService()
       console.log('Informacion de el servicio ',this.variableUsuarios)
-      localStorage.setItem('usuarios',JSON.stringify(this.variableUsuarios))
+      localStorage.setItem("usuarios",JSON.stringify(this.variableUsuarios))
     }
   }
 
@@ -28,7 +31,9 @@ export class HomePage implements OnInit{
   llamarFuncionService(){
     this.apiService.obtenerData().subscribe( data =>{
       this.variableUsuarios = data
-      console.log(this.variableUsuarios)
+      localStorage.setItem("usuarios",JSON.stringify(data))
+
+      return this.variableUsuarios
     })
 
 
