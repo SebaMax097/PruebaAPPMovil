@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let item of variableUsuarios">
+    <ion-card-header>
+      <ion-card-title>{{item.title}}</ion-card-title>
+      <ion-card-subtitle>ID User: {{item.id}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{item.body}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
